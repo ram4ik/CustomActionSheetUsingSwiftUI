@@ -36,7 +36,13 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ForEach([ColorScheme.dark, .light], id: \.self) { schema in
+            ContentView().edgesIgnoringSafeArea(.all)
+                .previewDevice("iPhone X")
+                .previewLayout(.fixed(width: 400, height: 700))
+            .colorScheme(schema)
+        }
+        
     }
 }
 
